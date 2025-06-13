@@ -4,3 +4,36 @@
 @theme {
     --font-sans: 'Inter', sans-serif;
 }
+
+/* Garantir que font-extralight funcione */
+.font-extralight {
+    font-weight: 200 !important;
+}
+
+/* Classes de gradiente personalizadas */
+.gradient-title {
+  background: linear-gradient(45deg, #ffffff, #cccccc, #ffffff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 3s ease-in-out infinite;
+}
+
+.gradient-title-dark {
+  background: linear-gradient(45deg, #333333, #666666, #333333);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 3s ease-in-out infinite;
+}
+
+.shine-text {
+  background: linear-gradient(45deg, #ffffff, #cccccc, #ffffff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 2s ease-in-out infinite;
+}

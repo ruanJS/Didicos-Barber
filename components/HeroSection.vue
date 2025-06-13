@@ -1,5 +1,5 @@
 <template>
-  <section id="inicio" class="relative h-screen overflow-hidden">
+  <section id="inicio" class="relative h-screen overflow-hidden -mt-20 pt-20">
     <!-- Carousel Background -->
     <div class="absolute inset-0">
       <Transition name="carousel-fade" mode="out-in">
@@ -18,10 +18,10 @@
     <div class="relative z-10 h-full flex items-center">
       <div class="w-full px-6 md:px-12 lg:px-24 xl:px-32">
         <div class="max-w-2xl">
-          <h1 class="text-3xl lg:text-6xl font-light text-white mb-6 font-source leading-tight">
+          <h1 class="text-3xl lg:text-6xl font-extralight text-white mb-6 font-source leading-tight">
             SÓ QUEM SE ARRISCA MERECE VIVER O EXTRAORDINÁRIO
           </h1>
-          <p class="text-lg lg:text-xl text-white mb-8 font-light">
+          <p class="text-lg lg:text-xl text-white mb-8 font-extralight">
             Horário de funcionamento: 09:00 às 19:00
           </p>
           <UButton
@@ -31,7 +31,7 @@
             class="border border-gray-400 hover:bg-gray-700 px-12 py-3 cursor-pointer"
             @click="openBookingModal"
           >
-            Agendar horário
+            <span class="font-extralight">Agendar horário</span>
           </UButton>
         </div>
       </div>

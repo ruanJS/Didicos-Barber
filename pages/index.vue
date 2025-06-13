@@ -2,6 +2,7 @@
     <HeroSection />
     <AboutSection />
     <ServicesSection />
+    <MapsSection />
     <FloatingButtons />
     <AppFooter />
 
@@ -11,6 +12,7 @@ import HeroSection from '~/components/HeroSection.vue';
 import AboutSection from '~/components/AboutSection.vue';
 import ServicesSection from '~/components/ServicesSection.vue';
 import FloatingButtons from '~/components/FloatingButtons.vue';
+import MapsSection from '~/components/MapsSection.vue';
 import AppFooter from '~/components/AppFooter.vue';
 
 useSeoMeta({
