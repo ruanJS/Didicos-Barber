@@ -11,7 +11,7 @@ const headerItems = [
   { label: 'Contato', to: '#contato', icon: 'i-lucide-mail' }
 ]
 
-const isSidebarOpen = ref(true)
+const isSidebarOpen = ref(false) // Mudança: inicia fechado
 const { width: screenWidth } = useWindowSize()
 const route = useRoute()
 const activeLink = computed(() => route.hash || route.path)
@@ -48,15 +48,15 @@ const openBookingModal = () => {
         <div class="relative h-full flex flex-col">
           <UButton 
             icon="i-lucide-x" 
-            class="absolute top-3 right-3 cursor-pointer text-sm" 
+            class="absolute top-3 right-3 cursor-pointer text-xs" 
             color="error" 
             variant="ghost"
-            size="lg" 
+            size="sm" 
             @click="toggleSidebar" 
           />
 
           <div class="px-4 pt-6 pb-2 border-b border-gray-700 mt-7">
-            <h3 class="text-sm uppercase tracking-wide text-gray-400 font-semibold">Menu de Navegação</h3>
+            <h3 class="text-xs uppercase tracking-wide text-gray-400 font-semibold">Menu de Navegação</h3>
           </div>
 
           <nav class="flex-1 overflow-y-auto p-4">
@@ -64,20 +64,27 @@ const openBookingModal = () => {
               v-model="activeLink"
               orientation="vertical" 
               :items="headerItems" 
-              class="space-y-1 text-sm" 
+              class="space-y-1 text-xs" 
               @update:model-value="() => {
                 if (screenWidth < 768) toggleSidebar()
               }"
             />
+            
+            <!-- Botão agendar no menu lateral para mobile -->
+            <div v-if="screenWidth < 768" class="mt-6 pt-4 border-t border-gray-700">
+              <UButton 
+                variant="ghost" 
+                class="w-full border border-gray-400 cursor-pointer h-10 flex items-center justify-center text-xs bg-transparent text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200"
+                @click="openBookingModal">
+                <span class="font-extralight">Agendar horário</span>
+              </UButton>
+            </div>
           </nav>
         </div>
       </aside>
 
       <!-- Slot principal -->
-      <main :class="[ 
-        'flex-1 p-4 overflow-auto transition-all duration-300 ease-in-out',
-        { 'ml-64': isSidebarOpen && screenWidth >= 768, 'ml-0': !isSidebarOpen || screenWidth < 768 }
-      ]">
+      <main class="flex-1 overflow-auto">
         <slot />
       </main>
     </div>
