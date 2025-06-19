@@ -99,6 +99,15 @@ const voltarParaAgendar = () => {
   showAgendar.value = true
 }
 
+watch([showAgendar, showEditar, showConcluido], ([ag, ed, co]) => {
+  const body = document.body
+  if (ag || ed || co) {
+    body.classList.add('overflow-hidden')
+  } else {
+    body.classList.remove('overflow-hidden')
+  }
+})
+
 onMounted(() => {
   const stop = observeSections()
   router.afterEach((to) => {

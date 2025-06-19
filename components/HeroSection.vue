@@ -15,7 +15,7 @@
     </div>
 
     <!-- Conteúdo -->
-    <div class="relative z-10 h-full flex items-center">
+    <div class="relative z-5 h-full flex items-center">
       <div class="w-full px-6 md:px-25 lg:px-24 xl:px-32">
         <div class="max-w-2xl">
           <h1 class="text-4xl lg:text-6xl font-extralight text-white mb-6 font-source leading-tight">
@@ -34,9 +34,11 @@
             <span class="font-extralight">Agendar horário</span>
           </UButton>
 
-          <AgendarModal :show="showAgendar" @update:show="showAgendar = $event" @next="abrirEditar" />
-          <EditarModal :show="showEditar" :data="formData" @update:show="showEditar = $event" @next="abrirConcluido" @edit="voltarParaAgendar"/>
-          <ModalConcluido :show="showConcluido" :formData="formData" @update:show="showConcluido = $event" />
+          <teleport to="body">
+            <AgendarModal :show="showAgendar" @update:show="showAgendar = $event" @next="abrirEditar" />
+            <EditarModal :show="showEditar" :data="formData" @update:show="showEditar = $event" @next="abrirConcluido" @edit="voltarParaAgendar"/>
+            <ModalConcluido :show="showConcluido" :formData="formData" @update:show="showConcluido = $event" />
+          </teleport>
 
         </div>
       </div>
@@ -83,6 +85,15 @@ const slides = [
   { image: '/img/img-style-2.png', alt: 'Slide 2' },
   { image: '/img/img-style-3.png', alt: 'Slide 3' }
 ]
+
+watch([showAgendar, showEditar, showConcluido], ([ag, ed, co]) => {
+  const body = document.body
+  if (ag || ed || co) {
+    body.classList.add('overflow-hidden')
+  } else {
+    body.classList.remove('overflow-hidden')
+  }
+})
 
 onMounted(() => {
   setInterval(() => {

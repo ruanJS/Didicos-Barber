@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky z-50 top-0 shadow-sm backdrop-blur-md bg-[#222222]">
+  <header class="sticky z-10 top-0 shadow-sm backdrop-blur-md bg-[#222222]">
     <div class="relative container mx-auto px-4 py-10 flex items-center justify-between min-h-[80px]">
       <UButton icon="i-lucide-align-left" class="cursor-pointer text-xs" color="neutral" variant="ghost" size="xl"
         @click="$emit('toggle-sidebar')" />

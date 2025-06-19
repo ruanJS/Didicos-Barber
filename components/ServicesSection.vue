@@ -18,7 +18,7 @@
           v-if="canScrollLeft"
           variant="ghost"
           color="gray"
-          class="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/70 hover:bg-white text-black rounded-full w-12 h-12 shadow-md flex items-center justify-center cursor-pointer"
+          class="absolute left-4 top-1/2 -translate-y-1/2 z-5 bg-white/70 hover:bg-white text-black rounded-full w-12 h-12 shadow-md flex items-center justify-center cursor-pointer"
           @click="scrollLeft"
         >
           <ChevronLeft class="h-6 w-6" />
@@ -28,7 +28,7 @@
           v-if="canScrollRight"
           variant="ghost"
           color="gray"
-          class="absolute right-5 top-1/2 -translate-y-1/2 z-10 bg-white/70 hover:bg-white text-black rounded-full w-12 h-12 shadow-md flex items-center justify-center cursor-pointer"
+          class="absolute right-5 top-1/2 -translate-y-1/2 z-5 bg-white/70 hover:bg-white text-black rounded-full w-12 h-12 shadow-md flex items-center justify-center cursor-pointer"
           @click="scrollRight"
         >
           <ChevronRight class="h-6 w-6" />
