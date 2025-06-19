@@ -22,7 +22,7 @@
         <img 
           src="/img/logo-didicos.png" 
           alt="Logo Didico´s Barber" 
-          class="mx-auto h-30 w-auto"
+          class="mx-auto h-auto w-auto"
         />
       </div>
 

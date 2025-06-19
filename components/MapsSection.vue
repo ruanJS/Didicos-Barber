@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4 lg:px-48">
       <!-- Header -->
       <div class="text-center mb-16">
-        <h2 class="text-6xl lg:text-8xl font-anton font-bold uppercase gradient-title">
+        <h2 class="text-5xl lg:text-8xl font-anton font-bold uppercase gradient-title">
           AONDE ESTAMOS LOCALIZADOS
         </h2>
       </div>

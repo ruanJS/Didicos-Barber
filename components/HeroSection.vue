@@ -18,10 +18,10 @@
     <div class="relative z-10 h-full flex items-center">
       <div class="w-full px-6 md:px-25 lg:px-24 xl:px-32">
         <div class="max-w-2xl">
-          <h1 class="text-3xl lg:text-6xl font-extralight text-white mb-6 font-source leading-tight">
+          <h1 class="text-4xl lg:text-6xl font-extralight text-white mb-6 font-source leading-tight">
             SÓ QUEM SE ARRISCA MERECE VIVER O EXTRAORDINÁRIO
           </h1>
-          <p class="text-lg lg:text-xl text-white mb-8 font-extralight">
+          <p class="text-lg lg:text-xl text-gray-300 mb-2 font-extralight">
             Horário de funcionamento: 09:00 às 19:00
           </p>
           <UButton

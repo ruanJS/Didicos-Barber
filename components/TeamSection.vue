@@ -3,8 +3,8 @@
     :class="[activeTab === tabs[0] ? 'bg-[#090909]' : 'bg-[#222222]', 'py-20 text-white transition-colors duration-500']"
     id="equipe"
   >
-    <!-- Banner com efeito shine e profundidade -->
-    <div class="relative overflow-hidden mb-16">
+    <!-- Banner -->
+    <div class="relative overflow-hidden mb-10">
       <div class="flex w-max animate-banner-shine items-center gap-20">
         <div
           v-for="n in 2"
@@ -40,56 +40,50 @@
     </div>
 
     <div class="container mx-auto px-4 lg:px-48">
-      <div class="flex items-center gap-10">
-        <!-- Título vertical -->
+      <!-- Título (mobile em cima, desktop lateral) -->
+      <div class="lg:hidden text-center mb-10">
+        <h2 class="text-4xl font-anton font-bold uppercase"
+            :class="activeTab === tabs[0] ? 'text-[#FFD700]' : 'text-[#C0C0C0]'">
+          Nossa Equipe
+        </h2>
+      </div>
+      <div class="flex gap-10 items-start">
+        <!-- Título vertical para desktop -->
         <div class="hidden lg:block">
           <h2
-            class="text-8xl font-anton font-bold uppercase writing-mode-vertical rotate-180 transition-all duration-500"
+            class="text-8xl font-anton font-bold uppercase writing-mode-vertical rotate-180"
             :class="activeTab === tabs[0] ? 'text-[#FFD700]' : 'text-[#C0C0C0]'"
           >
             Nossa Equipe
           </h2>
         </div>
 
-        <!-- Título mobile -->
-        <div class="lg:hidden text-center w-full mb-8">
-          <h2
-            class="text-4xl font-anton font-bold uppercase transition-all duration-500"
-            :class="activeTab === tabs[0] ? 'text-[#FFD700]' : 'text-[#C0C0C0]'"
-          >
-            Nossa Equipe
-          </h2>
-        </div>
+        <!-- Carrossel de cards -->
+        <div class="flex-1 relative overflow-hidden">
+        <UButton
+          v-if="canScrollLeft"
+          variant="ghost"
+          color="gray"
+          class="absolute left-4 top-1/2 -translate-y-12 z-10 bg-white/70 hover:bg-white text-black rounded-full w-12 h-12 shadow-md flex items-center justify-center cursor-pointer"
+          @click="scrollLeft"
+        >
+          <ChevronLeft class="h-6 w-6" />
+        </UButton>
+        <UButton
+          v-if="canScrollRight"
+          variant="ghost"
+          color="gray"
+          class="absolute right-5 top-1/2 -translate-y-12 z-10 bg-white/70 hover:bg-white text-black rounded-full w-12 h-12 shadow-md flex items-center justify-center cursor-pointer"
+          @click="scrollRight"
+        >
+          <ChevronRight class="h-6 w-6" />
+        </UButton>
 
-        <!-- Carrossel com transição -->
-        <div class="flex-1 relative">
-          <!-- Botões laterais (mobile e desktop) -->
-          <UButton
-            v-if="canScrollLeft"
-            variant="ghost"
-            color="gray"
-            class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white text-black rounded-full w-10 h-10 md:w-12 md:h-12"
-            @click="scrollLeft"
-          >
-            <ChevronLeft class="w-5 h-5 md:w-6 md:h-6" />
-          </UButton>
-
-          <UButton
-            v-if="canScrollRight"
-            variant="ghost"
-            color="gray"
-            class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white text-black rounded-full w-10 h-10 md:w-12 md:h-12"
-            @click="scrollRight"
-          >
-            <ChevronRight class="w-5 h-5 md:w-6 md:h-6" />
-          </UButton>
-
-          <!-- Lista de barbeiros -->
           <transition name="fade" mode="out-in">
             <div
               :key="activeTab"
               ref="teamContainer"
-              class="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth px-1"
+              class="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth px-1 mb-10"
               @scroll="updateScrollButtons"
             >
               <div
@@ -131,7 +125,8 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { ChevronLeft, ChevronRight, Twitter, Instagram, Facebook } from 'lucide-vue-next'
+import { Twitter, Instagram, Facebook } from 'lucide-vue-next'
+import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 
 const tabs = ['Barbeiros - Morumbi', 'Barbeiros - Embu Guaçu']
 const activeTab = ref(tabs[0])
@@ -142,10 +137,7 @@ const canScrollRight = ref(true)
 
 const allTeam = [
   {
-    id: 1,
-    name: 'Thomas',
-    image: '/img/Thomas.png',
-    unit: 'Morumbi',
+    id: 1, name: 'Thomas', image: '/img/Thomas.png', unit: 'Morumbi',
     socials: [
       { platform: 'twitter', icon: Twitter, url: 'https://twitter.com', hoverColor: 'hover:text-blue-400' },
       { platform: 'instagram', icon: Instagram, url: 'https://www.instagram.com/thoomasoliveira/', hoverColor: 'hover:text-pink-400' },
@@ -153,10 +145,7 @@ const allTeam = [
     ]
   },
   {
-    id: 2,
-    name: 'Gabriel',
-    image: '/img/Gabriel.png',
-    unit: 'Morumbi',
+    id: 2, name: 'Gabriel', image: '/img/Gabriel.png', unit: 'Morumbi',
     socials: [
       { platform: 'twitter', icon: Twitter, url: 'https://twitter.com', hoverColor: 'hover:text-blue-400' },
       { platform: 'instagram', icon: Instagram, url: 'https://www.instagram.com/bi.pedroso/', hoverColor: 'hover:text-pink-400' },
@@ -164,10 +153,7 @@ const allTeam = [
     ]
   },
   {
-    id: 3,
-    name: 'Will',
-    image: '/img/Will.png',
-    unit: 'Morumbi',
+    id: 3, name: 'Will', image: '/img/Will.png', unit: 'Morumbi',
     socials: [
       { platform: 'twitter', icon: Twitter, url: 'https://twitter.com', hoverColor: 'hover:text-blue-400' },
       { platform: 'instagram', icon: Instagram, url: 'https://www.instagram.com/e.u.s.o.u.w.i.l.l/', hoverColor: 'hover:text-pink-400' },
@@ -175,10 +161,7 @@ const allTeam = [
     ]
   },
   {
-    id: 4,
-    name: 'Jimmy',
-    image: '/img/Jimmy.png',
-    unit: 'Morumbi',
+    id: 4, name: 'Jimmy', image: '/img/Jimmy.png', unit: 'Morumbi',
     socials: [
       { platform: 'twitter', icon: Twitter, url: 'https://twitter.com', hoverColor: 'hover:text-blue-400' },
       { platform: 'instagram', icon: Instagram, url: 'https://www.instagram.com/_lucasjimmy/', hoverColor: 'hover:text-pink-400' },
@@ -186,10 +169,7 @@ const allTeam = [
     ]
   },
   {
-    id: 5,
-    name: 'Ricardo',
-    image: '/img/Ricardo.png',
-    unit: 'Embu Guaçu',
+    id: 5, name: 'Ricardo', image: '/img/Ricardo.png', unit: 'Embu Guaçu',
     socials: [
       { platform: 'twitter', icon: Twitter, url: 'https://twitter.com', hoverColor: 'hover:text-blue-400' },
       { platform: 'instagram', icon: Instagram, url: 'https://www.instagram.com/ricardoalmirjr/', hoverColor: 'hover:text-pink-400' },
@@ -197,10 +177,7 @@ const allTeam = [
     ]
   },
   {
-    id: 6,
-    name: 'Marreta',
-    image: '/img/Marreta.png',
-    unit: 'Embu Guaçu',
+    id: 6, name: 'Marreta', image: '/img/Marreta.png', unit: 'Embu Guaçu',
     socials: [
       { platform: 'twitter', icon: Twitter, url: 'https://twitter.com', hoverColor: 'hover:text-blue-400' },
       { platform: 'instagram', icon: Instagram, url: 'https://www.instagram.com/tio_marreta/', hoverColor: 'hover:text-pink-400' },
@@ -209,11 +186,9 @@ const allTeam = [
   }
 ]
 
-const filteredTeam = computed(() => {
-  return allTeam.filter(member => {
-    return activeTab.value.includes(member.unit)
-  })
-})
+const filteredTeam = computed(() =>
+  allTeam.filter(member => activeTab.value.includes(member.unit))
+)
 
 const scrollLeft = () => {
   teamContainer.value?.scrollBy({ left: -280, behavior: 'smooth' })

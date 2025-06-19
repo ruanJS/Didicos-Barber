@@ -10,22 +10,22 @@
       </div>
 
       <!-- Grid de Unidades -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 place-items-center">
         <div
           v-for="unit in units"
           :key="unit.id"
-          class="relative rounded-xl overflow-hidden shadow-lg max-w-xl "
+          class="relative rounded-xl overflow-hidden shadow-lg w-full max-w-md"
         >
           <img
             :src="unit.image"
             :alt="unit.name"
-            class="w-full h-130 object-cover"
+            class="w-full h-120 object-cover"
           />
           <div
-            class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-sm px-10 py-3 rounded text-center"
+            class="absolute bottom-0 left-0 right-0 bg-black/70 text-white px-4 py-6 text-center"
           >
-            <p class="font-semibold">{{ unit.address }}</p>
-            <p class="text-xs">{{ unit.name }}</p>
+            <p class="font-semibold text-sm md:text-base">{{ unit.address }}</p>
+            <p class="text-xs md:text-sm opacity-80">{{ unit.name }}</p>
           </div>
         </div>
       </div>

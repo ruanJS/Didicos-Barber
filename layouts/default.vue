@@ -132,11 +132,11 @@ onMounted(() => {
           <UButton icon="i-lucide-x" class="absolute top-10 right-3 cursor-pointer" color="error" variant="ghost" size="lg" @click="toggleSidebar" />
 
           <div class="px-6 pt-16 pb-2 border-b border-gray-700 mt-7">
-            <h3 class="text-xs uppercase tracking-wide text-gray-400 font-semibold">Menu de Navegação</h3>
+            <h3 class="text-base uppercase tracking-wide text-gray-400 font-semibold">Menu de Navegação</h3>
           </div>
 
           <nav class="flex-1 overflow-y-auto p-4">
-            <ul class="space-y-1 text-xs">
+            <ul class="space-y-1 text-sm">
               <li v-for="item in headerItems" :key="item.to">
                 <NuxtLink
                   :to="item.to"
