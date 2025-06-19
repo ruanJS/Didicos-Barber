@@ -7,16 +7,13 @@
     >
       <transition name="scale-fade">
         <div class="bg-[#090909] rounded-2xl p-10 w-full max-w-md text-center text-white relative">
-          <!-- Logo -->
           <img src="/img/logo-didicos.png" alt="Didico's Barber" class="mx-auto w-100 mb-4" />
 
-          <!-- Mensagem principal -->
           <h2 class="text-3xl font-bold leading-snug mb-8">
             Entraremos em contato<br />
             para a confirmação
           </h2>
 
-          <!-- Botão de voltar -->
           <button
             :disabled="enviando"
             @click="close"
@@ -25,7 +22,6 @@
             {{ enviando ? 'Enviando...' : 'Voltar' }}
           </button>
 
-          <!-- Botão de fechar -->
           <UButton
             icon="i-lucide-x"
             color="neutral"

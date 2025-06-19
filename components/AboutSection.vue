@@ -2,7 +2,6 @@
   <section id="sobre" class="bg-[#1C1C1C] py-35">
     <div class="container mx-auto px-4 lg:px-48">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <!-- Images -->
         <div class="relative">
           <div class="grid grid-cols-2 gap-4">
             <div class="space-y-4">
@@ -27,7 +26,6 @@
           </div>
         </div>
 
-        <!-- Content -->
         <div class="space-y-6">
           <h2 class="text-6xl lg:text-8xl font-anton font-bold uppercase gradient-title">
             SOBRE
@@ -61,7 +59,6 @@
             </p>
           </div>
         </div>
-
       </div>
     </div>
   </section>

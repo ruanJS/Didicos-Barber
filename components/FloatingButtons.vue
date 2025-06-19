@@ -1,6 +1,5 @@
 <template>
   <div class="fixed bottom-6 right-6 flex flex-row gap-4 z-50">
-    <!-- Back to Top -->
     <UButton
       v-if="showBackToTop"
       variant="solid"
@@ -10,7 +9,6 @@
       <ArrowUp class="h-6 w-6" />
     </UButton>
 
-    <!-- WhatsApp -->
     <div
       class="group flex items-center overflow-hidden bg-green-500 hover:bg-white hover:text-green-500 text-white rounded-full shadow-lg transition-all duration-300 ease-in-out pr-4 pl-3 py-3 max-w-[48px] hover:max-w-xs cursor-pointer"
     >

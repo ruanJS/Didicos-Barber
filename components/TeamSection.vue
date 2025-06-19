@@ -3,7 +3,6 @@
     :class="[activeTab === tabs[0] ? 'bg-[#090909]' : 'bg-[#222222]', 'py-20 text-white transition-colors duration-500']"
     id="equipe"
   >
-    <!-- Banner -->
     <div class="relative overflow-hidden mb-10">
       <div class="flex w-max animate-banner-shine items-center gap-20">
         <div
@@ -22,7 +21,6 @@
       </div>
     </div>
 
-    <!-- Tabs -->
     <div class="flex justify-center mb-12">
       <div class="inline-flex rounded-full bg-white/10 p-1 space-x-1">
         <button
@@ -40,7 +38,6 @@
     </div>
 
     <div class="container mx-auto px-4 lg:px-48">
-      <!-- Título (mobile em cima, desktop lateral) -->
       <div class="lg:hidden text-center mb-10">
         <h2 class="text-4xl font-anton font-bold uppercase"
             :class="activeTab === tabs[0] ? 'text-[#FFD700]' : 'text-[#C0C0C0]'">
@@ -48,7 +45,6 @@
         </h2>
       </div>
       <div class="flex gap-10 items-start">
-        <!-- Título vertical para desktop -->
         <div class="hidden lg:block">
           <h2
             class="text-8xl font-anton font-bold uppercase writing-mode-vertical rotate-180"
@@ -58,7 +54,6 @@
           </h2>
         </div>
 
-        <!-- Carrossel de cards -->
         <div class="flex-1 relative overflow-hidden">
         <UButton
           v-if="canScrollLeft"

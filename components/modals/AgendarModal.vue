@@ -7,12 +7,9 @@
     >
       <transition name="scale-fade">
         <div class="bg-[#090909] text-white rounded-2xl shadow-2xl w-full max-w-lg relative p-10 space-y-6">
-          <!-- Título -->
           <h3 class="text-2xl font-bold text-center">Agendar horário</h3>
 
-          <!-- Formulário -->
           <form class="space-y-6" @submit.prevent="confirmar">
-            <!-- Nome -->
             <div>
               <label class="block text-sm mb-1">Nome completo</label>
               <UInput
@@ -24,7 +21,6 @@
               />
             </div>
 
-            <!-- Telefone -->
             <div>
               <label class="block text-sm mb-1">Telefone</label>
               <UInput
@@ -38,7 +34,6 @@
               />
             </div>
 
-            <!-- Data -->
             <div>
               <label class="block text-sm mb-1">Selecione a data</label>
               <UInput
@@ -52,7 +47,6 @@
               />
             </div>
 
-            <!-- Tipo de Serviço -->
             <div>
               <label class="block text-sm mb-1">Selecione um tipo de serviço</label>
               <USelect
@@ -63,7 +57,6 @@
               />
             </div>
 
-            <!-- Unidade -->
             <div>
               <label class="block text-sm mb-1">Selecione uma unidade</label>
               <USelect
@@ -74,11 +67,9 @@
               />
             </div>
 
-            <!-- Horários com setas -->
             <div>
               <label class="block text-sm mb-2">Selecione um horário</label>
               <div class="flex items-center space-x-2 overflow-x-auto no-scrollbar">
-                <!-- Botão Esquerdo -->
                 <UButton
                   icon="i-lucide-chevron-left"
                   variant="ghost"
@@ -87,7 +78,6 @@
                   @click.prevent="scrollHorarios(-1)"
                 />
 
-                <!-- Horários -->
                 <div ref="horarioContainer" class="flex gap-2 overflow-x-auto px-1 scroll-smooth no-scrollbar">
                   <button
                     v-for="horario in horarios"
@@ -102,7 +92,6 @@
                   </button>
                 </div>
 
-                <!-- Botão Direito -->
                 <UButton
                   icon="i-lucide-chevron-right"
                   variant="ghost"
@@ -113,7 +102,6 @@
               </div>
             </div>
 
-            <!-- Botão de Agendar -->
             <UButton
               color="neutral"
               variant="outline"
@@ -125,7 +113,6 @@
             </UButton>
           </form>
 
-          <!-- Botão fechar (X) -->
           <UButton
             icon="i-lucide-x"
             color="neutral"

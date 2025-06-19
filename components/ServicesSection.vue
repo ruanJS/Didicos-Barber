@@ -1,7 +1,6 @@
 <template>
   <section id="servicos" class="bg-[#D9D9D9] py-30">
     <div class="container mx-auto px-4 lg:px-48">
-      <!-- Header -->
       <div class="text-center mb-16">
         <h2 class="text-6xl lg:text-8xl font-anton font-bold uppercase text-black mb-6">
           SERVIÇOS
@@ -11,9 +10,7 @@
         </p>
       </div>
 
-      <!-- Services Carousel -->
       <div class="relative">
-        <!-- Navigation Buttons -->
         <UButton
           v-if="canScrollLeft"
           variant="ghost"
@@ -34,7 +31,6 @@
           <ChevronRight class="h-6 w-6" />
         </UButton>
 
-        <!-- Services Scrollable Area -->
         <div
           ref="servicesContainer"
           class="flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth px-1"

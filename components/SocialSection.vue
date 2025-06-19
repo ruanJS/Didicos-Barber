@@ -2,24 +2,20 @@
   <section id="redes-sociais" class="bg-gray-100 py-24 relative">
     <div class="container mx-auto px-4 lg:px-48">
 
-      <!-- Aviso de atualização -->
       <div class="mb-6 text-center">
         <div class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-2 rounded-full shadow-sm animate-pulse">
           🚀 Em breve: perfil com novidades e o feed do Instagram direto por aqui. Fique ligado!
         </div>
       </div>
 
-      <!-- Título -->
       <div class="text-center mb-16">
         <h2 class="text-5xl md:text-6xl font-anton font-bold uppercase text-gray-800">
           Sigam a Didico´s
         </h2>
       </div>
 
-      <!-- Cartão do perfil simulado -->
       <div class="max-w-3xl mx-auto bg-white rounded-xl p-8 shadow-xl border border-gray-200">
         
-        <!-- Topo com avatar + botão -->
         <div class="flex items-center justify-between mb-6 flex-wrap gap-6">
           <div class="flex items-center gap-5">
             <div class="instagram-gradient p-[2px] rounded-full">
@@ -35,7 +31,6 @@
             </div>
           </div>
 
-          <!-- Botão seguir com link direto -->
           <UButton
             as="a"
             href="https://www.instagram.com/didicosbarber/"
@@ -48,7 +43,6 @@
           </UButton>
         </div>
 
-        <!-- Estatísticas -->
         <div class="grid grid-cols-3 gap-4 text-center mb-6">
           <div>
             <div class="text-xl font-semibold text-gray-900">215</div>
@@ -64,7 +58,6 @@
           </div>
         </div>
 
-        <!-- Bio e link -->
         <div class="text-start text-gray-700 space-y-2 text-sm md:text-base">
           <p>🔸 Unidade I: Embu-Guaçu &nbsp;&nbsp; 🔸 Unidade II: Portal do Morumbi</p>
           <p>Estilo clássico, ousado e moderno</p>
@@ -84,7 +77,6 @@
           </p>
         </div>
 
-        <!-- Simulação do feed com blur -->
         <div class="mt-10">
           <div class="grid grid-cols-3 gap-2 relative">
             <div class="relative overflow-hidden rounded-md">
@@ -107,7 +99,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>

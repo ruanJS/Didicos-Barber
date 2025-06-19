@@ -1,15 +1,12 @@
 <template>
   <section id="unidade" class="relative bg-[#E0E0E0] py-35 overflow-hidden">
-    <!-- Conteúdo -->
     <div class="relative container mx-auto px-4">
-      <!-- Título -->
       <div class="text-center mb-12">
         <h2 class="text-6xl lg:text-8xl md:text-5xl font-anton font-bold uppercase text-black font-anton">
           CONHEÇA NOSSAS UNIDADES
         </h2>
       </div>
 
-      <!-- Grid de Unidades -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 place-items-center">
         <div
           v-for="unit in units"

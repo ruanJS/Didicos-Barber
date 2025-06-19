@@ -2,7 +2,6 @@
   <footer id="contato" class="bg-black text-white py-12 text-center text-sm">
     <div class="container mx-auto px-4 space-y-8">
       
-      <!-- Redes Sociais -->
       <div class="flex justify-center gap-6">
         <a
           v-for="social in socialLinks"
@@ -17,7 +16,6 @@
         </a>
       </div>
 
-      <!-- Logo -->
       <div>
         <img 
           src="/img/logo-didicos.png" 
@@ -26,12 +24,10 @@
         />
       </div>
 
-      <!-- Copyright -->
       <p class="text-gray-400 text-xls">
         © {{ currentYear }} Didico´s Barber. Todos os direitos reservados.
       </p>
 
-      <!-- Developer Credit -->
       <p class="text-xls text-gray-300">
         Desenvolvido por 
         <a 

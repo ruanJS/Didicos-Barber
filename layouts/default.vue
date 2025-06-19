@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 import { useRoute, useRouter } from 'vue-router'
 import AppHeader from '~/components/Header.vue'
@@ -22,7 +22,9 @@ const isSidebarOpen = ref(false)
 const { width: screenWidth } = useWindowSize()
 const route = useRoute()
 const router = useRouter()
-const activeLink = ref(route.hash || route.path)
+
+const isClient = ref(false)
+const activeLink = ref('') 
 
 const showAgendar = ref(false)
 const showEditar = ref(false)
@@ -109,6 +111,9 @@ watch([showAgendar, showEditar, showConcluido], ([ag, ed, co]) => {
 })
 
 onMounted(() => {
+  isClient.value = true
+  activeLink.value = route.hash || route.path
+
   const stop = observeSections()
   router.afterEach((to) => {
     activeLink.value = to.hash || to.path
@@ -118,30 +123,37 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="flex flex-col min-h-screen relative">
-      <!-- Cabeçalho -->
-      <AppHeader @toggle-sidebar="toggleSidebar" @open-booking-modal="openBookingModal" />
+  <div class="flex flex-col min-h-screen relative">
+    <AppHeader @toggle-sidebar="toggleSidebar" @open-booking-modal="openBookingModal" />
 
-    <!-- Overlay para mobile -->
     <div
-    v-if="isSidebarOpen && screenWidth < 768"
-    class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
-    @click="toggleSidebar"
+      v-if="isClient && isSidebarOpen && screenWidth < 768"
+      class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+      @click="toggleSidebar"
     />
 
-    <!-- Sidebar + Conteúdo -->
     <div class="flex flex-1 overflow-hidden">
-      <!-- Sidebar -->
-      <aside :class="[
-        'fixed top-0 left-0 z-50 h-screen w-64 bg-[#222222] shadow-xl',
-        'transform transition-transform duration-300 ease-in-out',
-        isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      ]">
+      <aside
+        :class="[
+          'fixed top-0 left-0 z-50 h-screen w-64 bg-[#222222] shadow-xl',
+          'transform transition-transform duration-300 ease-in-out',
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        ]"
+      >
         <div class="relative h-full flex flex-col">
-          <UButton icon="i-lucide-x" class="absolute top-10 right-3 cursor-pointer" color="error" variant="ghost" size="lg" @click="toggleSidebar" />
+          <UButton
+            icon="i-lucide-x"
+            class="absolute top-10 right-3 cursor-pointer"
+            color="error"
+            variant="ghost"
+            size="lg"
+            @click="toggleSidebar"
+          />
 
           <div class="px-6 pt-16 pb-2 border-b border-gray-700 mt-7">
-            <h3 class="text-base uppercase tracking-wide text-gray-400 font-semibold">Menu de Navegação</h3>
+            <h3 class="text-base uppercase tracking-wide text-gray-400 font-semibold">
+              Menu de Navegação
+            </h3>
           </div>
 
           <nav class="flex-1 overflow-y-auto p-4">
@@ -151,7 +163,9 @@ onMounted(() => {
                   :to="item.to"
                   :class="[
                     'flex items-center px-3 py-3 rounded transition-colors duration-200',
-                    activeLink === item.to ? 'bg-barber-medium-gray text-white' : 'text-gray-400 hover:bg-barber-dark-gray hover:text-white'
+                    activeLink === item.to
+                      ? 'bg-barber-medium-gray text-white'
+                      : 'text-gray-400 hover:bg-barber-dark-gray hover:text-white'
                   ]"
                   @click.prevent="() => {
                     if (item.to === '/') {
@@ -162,7 +176,7 @@ onMounted(() => {
                     } else {
                       router.push(item.to)
                     }
-                    if (screenWidth < 768) toggleSidebar()
+                    if (isClient && screenWidth < 768) toggleSidebar()
                   }"
                 >
                   <UIcon :name="item.icon" class="mr-2 w-4 h-4" />
@@ -171,7 +185,7 @@ onMounted(() => {
               </li>
             </ul>
 
-            <div v-if="screenWidth < 768" class="mt-6 pt-4 border-t border-gray-700">
+            <div v-if="isClient && screenWidth < 768" class="mt-6 pt-4 border-t border-gray-700">
               <UButton
                 variant="ghost"
                 class="w-full border border-gray-400 cursor-pointer h-10 flex items-center justify-center text-xs bg-transparent text-gray-200 hover:text-white"
@@ -184,15 +198,28 @@ onMounted(() => {
         </div>
       </aside>
 
-      <!-- Conteúdo principal -->
       <main class="flex-1 overflow-auto">
         <slot />
       </main>
     </div>
 
-    <!-- ✅ Modais globalmente fora do header -->
-    <AgendarModal :show="showAgendar" @update:show="showAgendar = $event" @next="abrirEditar" />
-    <EditarModal :show="showEditar" :data="formData" @update:show="showEditar = $event" @next="abrirConcluido" @edit="voltarParaAgendar" />
-    <ModalConcluido :show="showConcluido" :formData="formData" @update:show="showConcluido = $event" @clear-form="resetForm" />
+    <AgendarModal
+      :show="showAgendar"
+      @update:show="showAgendar = $event"
+      @next="abrirEditar"
+    />
+    <EditarModal
+      :show="showEditar"
+      :data="formData"
+      @update:show="showEditar = $event"
+      @next="abrirConcluido"
+      @edit="voltarParaAgendar"
+    />
+    <ModalConcluido
+      :show="showConcluido"
+      :formData="formData"
+      @update:show="showConcluido = $event"
+      @clear-form="resetForm"
+    />
   </div>
 </template>

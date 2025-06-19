@@ -1,6 +1,5 @@
 <template>
   <section class="w-full overflow-hidden bg-gradient-to-b from-[#1C1C1C] to-[#2F2F2F] py-6">
-    <!-- Unidade Portal Morumbi -->
     <div class="relative overflow-hidden whitespace-nowrap group">
       <div
         class="flex gap-12 animate-marquee-right-to-left"
@@ -14,7 +13,6 @@
       </div>
     </div>
 
-    <!-- Unidade Embu-Guaçu -->
     <div class="relative overflow-hidden whitespace-nowrap group mt-4">
       <div
         class="flex gap-12 animate-marquee-left-to-right"
