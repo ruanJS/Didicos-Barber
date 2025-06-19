@@ -4,27 +4,32 @@
     <UButton
       v-if="showBackToTop"
       variant="solid"
-      class="rounded-full shadow-lg bg-white hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
+      class="w-12 h-12 rounded-full shadow-lg bg-white hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer flex items-center justify-center"
       @click="scrollToTop"
     >
       <ArrowUp class="h-6 w-6" />
     </UButton>
 
     <!-- WhatsApp -->
-    <UButton
-      variant="solid"
-      color="white"
-      class="w-12 h-12 rounded-full shadow-lg bg-green-500 hover:bg-white hover:text-green-500 transition-colors duration-300"
+    <div
+      class="group flex items-center overflow-hidden bg-green-500 hover:bg-white hover:text-green-500 text-white rounded-full shadow-lg transition-all duration-300 ease-in-out pr-4 pl-3 py-3 max-w-[48px] hover:max-w-xs cursor-pointer"
     >
       <a 
         href="https://wa.me/message/O3W3ST3HA272K1" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="flex items-center justify-center w-full h-full"
+        class="flex items-center gap-2 w-full h-full"
       >
-        <MessageCircle class="h-6 w-6" />
+        <div class="flex items-center justify-center relative">
+          <MessageCircle class="flex-shrink-0 transition-opacity duration-200 group-hover:opacity-0" />
+        </div>
+        <span
+          class="ml-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm"
+        >
+          Olá, posso te ajudar?
+        </span>
       </a>
-    </UButton>
+    </div>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <section id="mapas" class="bg-barber-background py-20">
+  <section id="localização" class="bg-[#090909] py-35">
     <div class="container mx-auto px-4 lg:px-48">
       <!-- Header -->
       <div class="text-center mb-16">

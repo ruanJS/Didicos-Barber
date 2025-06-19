@@ -1,12 +1,12 @@
 <template>
-  <section id="servicos" class="bg-barber-border-gray py-20">
+  <section id="servicos" class="bg-[#D9D9D9] py-30">
     <div class="container mx-auto px-4 lg:px-48">
       <!-- Header -->
       <div class="text-center mb-16">
-        <h2 class="text-6xl lg:text-8xl font-anton font-bold uppercase gradient-title-dark mb-6">
+        <h2 class="text-6xl lg:text-8xl font-anton font-bold uppercase text-black mb-6">
           SERVIÇOS
         </h2>
-        <p class="text-barber-dark-gray text-lg max-w-2xl mx-auto">
+        <p class="text-black text-lg max-w-2xl mx-auto">
           Conheça nossos serviços e agende seu horário para um atendimento exclusivo.
         </p>
       </div>
@@ -18,52 +18,43 @@
           v-if="canScrollLeft"
           variant="ghost"
           color="gray"
-          class="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-white/80 text-white hover:text-black rounded-full w-16 h-16"
+          class="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/70 hover:bg-white text-black rounded-full w-12 h-12 shadow-md flex items-center justify-center cursor-pointer"
           @click="scrollLeft"
         >
-          <ChevronLeft class="h-8 w-8" />
+          <ChevronLeft class="h-6 w-6" />
         </UButton>
 
         <UButton
           v-if="canScrollRight"
           variant="ghost"
           color="gray"
-          class="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-white/80 text-white hover:text-black rounded-full w-16 h-16"
+          class="absolute right-5 top-1/2 -translate-y-1/2 z-10 bg-white/70 hover:bg-white text-black rounded-full w-12 h-12 shadow-md flex items-center justify-center cursor-pointer"
           @click="scrollRight"
         >
-          <ChevronRight class="h-8 w-8" />
+          <ChevronRight class="h-6 w-6" />
         </UButton>
 
-        <!-- Services Grid -->
-        <div 
+        <!-- Services Scrollable Area -->
+        <div
           ref="servicesContainer"
-          class="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth lg:grid lg:grid-cols-3 lg:overflow-visible"
+          class="flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth px-1"
           @scroll="updateScrollButtons"
         >
           <div
             v-for="service in services"
             :key="service.id"
-            class="flex-shrink-0 w-80 lg:w-auto bg-white rounded-lg shadow-lg overflow-hidden"
+            class="flex-shrink-0 w-[280px] sm:w-[350px] bg-white rounded-b-lg shadow-md overflow-hidden transition hover:scale-[1.01]"
           >
-            <img 
-              :src="service.image" 
+            <img
+              :src="service.image"
               :alt="service.name"
-              class="w-full h-48 object-cover"
-            >
-            <div class="p-6">
-              <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-barber-dark-gray">
-                  {{ service.name }}
-                </h3>
-                <UButton
-                  color="gray"
-                  variant="solid"
-                  class="bg-barber-background text-white hover:bg-barber-dark-gray"
-                  @click="openBookingModal"
-                >
-                  {{ service.price }}
-                </UButton>
-              </div>
+              class="w-full h-auto object-cover"
+            />
+            <div class="flex justify-between items-center px-4 py-3">
+              <h3 class="text-base font-semibold text-black">{{ service.name }}</h3>
+              <span class="bg-[#1E1E1E] text-white text-sm font-medium px-3 py-1 rounded-md">
+                {{ service.price }}
+              </span>
             </div>
           </div>
         </div>
@@ -73,6 +64,7 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 
 const servicesContainer = ref(null)
@@ -80,7 +72,7 @@ const canScrollLeft = ref(false)
 const canScrollRight = ref(true)
 
 const services = [
-  { id: 1, name: 'Corte', price: 'R$ 30,00', image: '/img/cabelo.png' },
+  { id: 1, name: 'Corte de cabelo', price: 'R$ 55,90', image: '/img/cabelo.png' },
   { id: 2, name: 'Corte completo', price: 'R$ 75,90', image: '/img/corte-completo.png' },
   { id: 3, name: 'Corte & Barba', price: 'R$ 85,90', image: '/img/corte&barba.png' },
   { id: 4, name: 'Barba', price: 'R$ 45,90', image: '/img/barba.png' },
@@ -91,28 +83,16 @@ const services = [
 ]
 
 const scrollLeft = () => {
-  if (servicesContainer.value) {
-    servicesContainer.value.scrollBy({ left: -320, behavior: 'smooth' })
-  }
+  servicesContainer.value?.scrollBy({ left: -320, behavior: 'smooth' })
 }
-
 const scrollRight = () => {
-  if (servicesContainer.value) {
-    servicesContainer.value.scrollBy({ left: 320, behavior: 'smooth' })
-  }
+  servicesContainer.value?.scrollBy({ left: 320, behavior: 'smooth' })
 }
-
 const updateScrollButtons = () => {
-  if (servicesContainer.value) {
-    const { scrollLeft, scrollWidth, clientWidth } = servicesContainer.value
-    canScrollLeft.value = scrollLeft > 0
-    canScrollRight.value = scrollLeft < scrollWidth - clientWidth - 10
-  }
-}
-
-const openBookingModal = () => {
-  const event = new CustomEvent('open-booking-modal')
-  window.dispatchEvent(event)
+  if (!servicesContainer.value) return
+  const { scrollLeft, scrollWidth, clientWidth } = servicesContainer.value
+  canScrollLeft.value = scrollLeft > 0
+  canScrollRight.value = scrollLeft < scrollWidth - clientWidth - 10
 }
 
 onMounted(() => {

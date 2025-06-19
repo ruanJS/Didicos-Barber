@@ -16,7 +16,7 @@
 
     <!-- Conteúdo -->
     <div class="relative z-10 h-full flex items-center">
-      <div class="w-full px-6 md:px-12 lg:px-24 xl:px-32">
+      <div class="w-full px-6 md:px-25 lg:px-24 xl:px-32">
         <div class="max-w-2xl">
           <h1 class="text-3xl lg:text-6xl font-extralight text-white mb-6 font-source leading-tight">
             SÓ QUEM SE ARRISCA MERECE VIVER O EXTRAORDINÁRIO
@@ -28,11 +28,16 @@
             color="gray"
             variant="outline"
             size="lg"
-            class="border border-gray-400 hover:bg-gray-700 px-12 py-3 cursor-pointer"
-            @click="openBookingModal"
+            class="border border-gray-300 cursor-pointer text-gray-200 hover:text-gray-100 hover:bg-[#808080] transition-colors duration-200 px-12 py-3 "
+            @click="abrirAgendar"
           >
             <span class="font-extralight">Agendar horário</span>
           </UButton>
+
+          <AgendarModal :show="showAgendar" @update:show="showAgendar = $event" @next="abrirEditar" />
+          <EditarModal :show="showEditar" :data="formData" @update:show="showEditar = $event" @next="abrirConcluido" @edit="voltarParaAgendar"/>
+          <ModalConcluido :show="showConcluido" :formData="formData" @update:show="showConcluido = $event" />
+
         </div>
       </div>
     </div>
@@ -41,6 +46,35 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import AgendarModal from '@/components/modals/AgendarModal.vue'
+import EditarModal from '@/components/modals/EditarModal.vue'
+import ModalConcluido from '@/components/modals/ModalConcluido.vue'
+
+const showAgendar = ref(false)
+const showEditar = ref(false)
+const showConcluido = ref(false)
+const formData = ref({})
+
+const abrirAgendar = (_event) => { showAgendar.value = true }
+const abrirEditar = (data) => {
+  formData.value = data
+  showEditar.value = true
+}
+
+const abrirConcluido = () => {
+  showEditar.value = false
+  showConcluido.value = true
+  resetForm()
+}
+
+const voltarParaAgendar = () => {
+  showEditar.value = false
+  showAgendar.value = true
+}
+
+const resetForm = () => {
+  formData.value = {}
+}
 
 const currentSlide = ref(0)
 
@@ -56,10 +90,6 @@ onMounted(() => {
   }, 5000)
 })
 
-const openBookingModal = () => {
-  const event = new CustomEvent('open-booking-modal')
-  window.dispatchEvent(event)
-}
 </script>
 
 <style scoped>

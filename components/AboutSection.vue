@@ -1,5 +1,5 @@
 <template>
-  <section id="sobre" class="bg-barber-dark-gray py-20">
+  <section id="sobre" class="bg-[#1C1C1C] py-35">
     <div class="container mx-auto px-4 lg:px-48">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Images -->
@@ -61,7 +61,9 @@
             </p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
+  <HoursBanner />
 </template>
