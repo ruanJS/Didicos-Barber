@@ -9,6 +9,9 @@
   <FloatingButtons />
   <Footer />
 </template>
+<script lang="ts">
+export default {}
+</script>
 
 <script lang="ts" setup>
 import HeroSection from '~/components/HeroSection.vue'
