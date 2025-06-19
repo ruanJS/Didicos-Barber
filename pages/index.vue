@@ -9,11 +9,12 @@
   <FloatingButtons />
   <Footer />
 </template>
-<script lang="ts">
-export default {}
-</script>
 
 <script lang="ts" setup>
+definePageMeta({
+  layout: 'default',
+})
+
 import HeroSection from '~/components/HeroSection.vue'
 import AboutSection from '~/components/AboutSection.vue'
 import ServicesSection from '~/components/ServicesSection.vue'

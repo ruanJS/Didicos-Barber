@@ -1,4 +1,4 @@
-import emailjs from 'emailjs-com'
+import emailjs from '@emailjs/browser'
 
 const SERVICE_ID = 'service_krdakqb'
 const TEMPLATE_ID = 'template_63ovsge'
