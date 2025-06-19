@@ -63,9 +63,11 @@ const toast = useToast()
 
 const close = () => emit('update:show', false)
 
-const formatarData = (data: string) => {
+const formatarData = (data?: string) => {
+  if (!data || typeof data !== 'string') return ''
   if (data.includes('/')) return data 
   const [ano, mes, dia] = data.split('-')
+  if (!ano || !mes || !dia) return ''
   return `${dia}/${mes}/${ano}`
 }
 
