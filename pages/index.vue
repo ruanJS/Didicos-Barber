@@ -30,7 +30,8 @@ useSeoMeta({
 
   ogTitle: "Didico's Barber - Barbearia Premium",
   ogDescription: "O melhor corte da região do Morumbi. Agende seu horário.",
-  ogImage: '/public/img/logo.png',
+  ogImage: '/img/logo.png',
+
   ogUrl: 'https://didicosbarber.vercel.app',
   ogType: 'website',
 
